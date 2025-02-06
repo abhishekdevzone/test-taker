@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .col{
+            display: flex;
+            flex-direction: column;
+        }
+        .row{
+            display: flex;
+            flex-direction: row;
+        }
+        .justify-content-center{
+            justify-content: center;
+        }
+        .align-items-center{
+            align-items: center;
+        }
+        .text-center{
+            text-align: center;
+        }
+        *{
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        .pad-8{
+            padding: 8px;
+        }
+        .center-box{
+            transform: translate(-50%, -50%);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            padding: 12px;
+            width: 90%;
+            background-color: white;
+            min-width: 300px;
+            border: 1px solid #ccc;
+        }
+        .right-bar{
+            width: 100%;
+            justify-content: space-between;
+            height: 420px;
+        }
+        .left-bar{
+            height: 420px;
+            background-color: rgb(0,0,0,0.025);
+            align-items: start;
+            padding: 4px;
+            
+            overflow: scroll;
+            margin-right: 12px;
+            min-width: 120px;
+            border-radius: 12px;
+        }
+        .left-title-bar{
+            padding: 8px;
+            text-align: start;
+        }
+        .main-row{
+            width: 100%;
+
+        }
+        #question-display{
+            width: 100%;
+        }
+        .question-container{
+            text-align: start;
+            padding: 8px;
+        }
+        .spac-vert{
+            height: 8px;
+        }
+        .navigation{
+            text-align: end;
+            padding: 8px;
+        }
+        #next{
+            background-color: green;
+            color: white;
+            border: none;
+            min-width: 80px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        #skip{
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+            min-width: 80px;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+        .overview{
+            background-color: rgb(226, 226, 226);
+            color: black;
+            border: none;
+            margin-bottom: 8px;
+            width: 100%;
+            padding: 6px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button[type="selected"]{
+            background-color: blue;
+            color: white;
+        }
+        button[type="done"]{
+            background-color: green;
+            color: white;
+        }
+        
+        #score-card{
+            text-align: start;
+            min-width: 320px;
+            display: none;
+        }
+        #start{
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: green;
+            color: white;
+        }
+        
+        #question-content{
+            display: none;
+        }
+        .timer{
+            position: absolute;
+            right: 24px;
+            font-size: 24px;
+            top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="center-box">
+            <div class="col justify-content-center align-items-center text-center">
+                <h2><div id="test-name">Loading...
+                </div>
+                    <div class="timer" id="timer">00:00</div>
+                </h2>
+                <div class="spac-vert"></div>
+                <div id="question-content" class="row main-row">
+                    <div class="col left-bar">
+                        <div class="left-title-bar">
+                            <h4 style="display: flex;" id="total-questions">Tital Questions: 0</h4>
+                            <h4 id="attempted">Attempted: 12</h4>
+                            <div class="spac-vert"></div>
+                            <div class="questions-overview" id="questions-overview">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col right-bar">
+                        <div class="question-container">
+                            <h4 id="question-number">
+                                loading...
+                            </h4>
+                            <div id="question-display">Loading...</div>
+                            <div class="spac-vert"></div>
+                            <div class="answering-area" id="answering-area">Loading...</div>
+                        </div>
+                        <div class="navigation">
+                            <button id="skip">Skip</button>
+                            <button id="next" onclick="saveAndNext()">Save and Next</button>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="start-button">
+                    <button id="start" onclick="start()">Start your Test</button>
+                </div>
+                <div id="score-card">
+                    <h2>Score Card</h2>
+                    <h4>Total Questions: <span id="tquestion">Loading...</span></h4>
+                    <h4>Attempted: <span id="aquestion">Loading...</span></h4>
+                    <h4>Unattempted: <span id="uquestion">Loading...</span></h4>
+                    <h4>Correct: <span id="cquestion">Loading...</span></h4>
+                    <h4>Incorrect: <span id="iquestion">Loading...</span></h4>
+                    <h4>Score: <span id="score">Loading...</span></h4>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
